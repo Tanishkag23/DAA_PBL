@@ -344,9 +344,8 @@ async function loginAs(role) {
         sessionStorage.setItem('scae_email', res.data.email);
         window.location.href = role + '.html';
     } catch(e) {
-        // Backend may be sleeping / DB reset on free tier.
-        // All three portals have full offline fallbacks for every
-        // API call, so a local guest session is fully functional.
+        // Backend may be sleeping / DB reset on free tier or local server not started.
+        alert("⚠️ WARNING: The backend server is not running (or could not be reached).\n\nYou will be logged in using an Offline Guest Session. You will be able to view the dashboard, but you CANNOT submit or save any real data (like filing complaints).\n\nTo fix this: Please run 'run_backend.bat' in the backend folder and then log in again.");
         localLogin();
     }
 }
